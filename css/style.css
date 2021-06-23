@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+}
+
 a {
   text-decoration: none;
 }
@@ -17,7 +21,6 @@ img {
 /* VARIABLES */
 :root {
   --header-height: 4.5rem;
-
   /* colors */
   --hue: 159;
   /* HSL color mode */
@@ -40,7 +43,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1 {
+.title {
   font: 700 1.875rem 'Poppins', sans-serif;
   color: var(--title-color);
   -webkit-font-smoothing: auto;
@@ -71,35 +74,6 @@ h1 {
   );
 }
 
-/* LAYOUT */
-#header {
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: 2rem;
-  display: flex;
-  width: 100%;
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  background-color: var(--body-color);
-}
-
-nav {
-  height: var(--header-height);
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.logo {
-  font: 700 1.31rem 'Poppins', sans-serif;
-  color: var(--title-color);
-}
-
-.logo span {
-  color: var(--base-color);
-}
 .container {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
@@ -114,12 +88,97 @@ nav {
   padding: 5rem 0;
 }
 
+#header {
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: var(--body-color);
+}
+
 main {
-  margin-top: var(--header-height);
+  margin-top: calc(var(--header-height) + 2rem);
+}
+
+/* LOGO */
+.logo {
+  font: 700 1.31rem 'Poppins', sans-serif;
+  color: var(--title-color);
+}
+
+.logo span {
+  color: var(--base-color);
+}
+
+/* NAVIGATION */
+nav {
+  height: var(--header-height);
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+nav ul li {
+  text-align: center;
+}
+
+nav ul li a {
+  transition: color 0.2s;
+  position: relative;
+}
+
+nav ul li a:hover {
+  color: var(--base-color);
+}
+
+nav ul li a::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: var(--base-color);
+  position: absolute;
+  left: 0;
+  bottom: -1.5rem;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+  transition: width 0.2s;
+}
+
+nav .menu {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* SHOW MENU */
+nav.show .menu {
+  opacity: 1;
+  visibility: visible;
+
+  background: var(--body-color);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+nav.show .menu {
+  display: grid;
+  place-content: center;
+}
+
+nav.show ul.grid {
+  gap: 4rem;
 }
 
 /* HOME */
-
 #home {
   overflow: hidden;
 }
