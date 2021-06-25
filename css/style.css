@@ -125,7 +125,7 @@ body {
 }
 
 #header.scroll {
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
 }
 
 main {
@@ -251,7 +251,7 @@ nav.show div.icon-close {
   content: '';
   height: 100%;
   width: 100%;
-  background-color: var(--base-color-second);
+  background: var(--base-color-second);
   position: absolute;
   top: -16.8%;
   left: 16.7%;
@@ -279,7 +279,7 @@ nav.show div.icon-close {
 
 #home .text p {
   margin-bottom: 2rem;
-  max-width: 100%;
+  /* max-width: 100%; */
 }
 
 /* ABOUT */
@@ -300,7 +300,7 @@ nav.show div.icon-close {
   content: '';
   height: 100%;
   width: 100%;
-  background-color: var(--base-color-second);
+  background: var(--base-color-second);
   position: absolute;
   top: -16.8%;
   right: 16.7%;
@@ -319,7 +319,6 @@ nav.show div.icon-close {
 #about .text {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-  text-align: center;
 }
 
 /* SERVICES */
@@ -346,3 +345,67 @@ nav.show div.icon-close {
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
 }
+
+/* TESTIMONIALS */
+
+#testimonials {
+  background: white;
+}
+
+#testimonials .container {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#testimonials header {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  margin-bottom: 0;
+}
+
+#testimonials blockquote {
+  padding: 2rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 0.25rem;
+}
+
+#testimonials blockquote p {
+  position: relative;
+  text-indent: 1.875rem;
+  margin-bottom: 1.5rem;
+  color: var(--title-color);
+}
+
+#testimonials blockquote p span {
+  font: 700 2.5rem serif;
+  position: absolute;
+  top: -0.375rem;
+  left: -1.875rem;
+  color: var(--base-color);
+}
+
+#testimonials cite {
+  display: flex;
+  align-items: center;
+}
+
+#testimonials cite img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  clip-path: circle();
+  margin-right: 0.5rem;
+}
+
+/* SWIPER */
+
+.swiper-slide {
+  height: auto;
+  padding: 4rem 1.5rem;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--base-color);
+}
+
+/* CONTACT */
