@@ -15,9 +15,9 @@ for (const link of links) {
 }
 
 // efeito de sombra de scroll do header
+const header = document.querySelector('#header')
+const navHeight = header.offsetHeight
 function chanceHeaderWhenScroll() {
-  const header = document.querySelector('#header')
-  const navHeight = header.offsetHeight
   if (window.scrollY >= navHeight) {
     // scroll maior que altura do header
     header.classList.add('scroll')
@@ -35,7 +35,14 @@ const swiper = new Swiper('.swiper-container', {
     el: '.swiper-pagination'
   },
   mousewheel: true,
-  keyboard: true
+  keyboard: true,
+  // ajuste para resposividade "quebra de visão"
+  breakpoints: {
+    767: {
+      slidesPerView: 2,
+      setWrapperSize: true
+    }
+  }
 })
 
 // SCROLL REVEAL JS - MOSTRAR ELEMENTOS QUANDO SCROLL NA PAGINA.
@@ -59,8 +66,8 @@ scrollReveal.reveal(
 )
 
 // back to up - botão voltar ao topo
+const backToUpButton = document.querySelector('.back-to-top')
 function backToTop() {
-  const backToUpButton = document.querySelector('.back-to-top')
   if (window.scrollY >= 560) {
     backToUpButton.classList.add('show')
   } else {
@@ -68,8 +75,34 @@ function backToTop() {
   }
 }
 
+// Menu ativo conforme a seção visível na página
+const sections = document.querySelectorAll('main section[id]')
+function activateMenuAtCurrentSection() {
+  const checkpoint = window.pageYOffset + (window.innerHeight / 8) * 4
+
+  for (const section of sections) {
+    const sectionTop = section.offsetTop
+    const sectionHeight = section.offsetHeight
+    const sectionId = section.getAttribute('id')
+
+    const checkpontStart = checkpoint >= sectionTop
+    const checkpointEnd = checkpoint <= sectionTop + sectionHeight
+
+    if (checkpontStart && checkpointEnd) {
+      document
+        .querySelector('nav ul li a[href*=' + sectionId + ']')
+        .classList.add('active')
+    } else {
+      document
+        .querySelector('nav ul li a[href*=' + sectionId + ']')
+        .classList.remove('active')
+    }
+  }
+}
+
 // when scroll page
 window.addEventListener('scroll', function () {
   chanceHeaderWhenScroll()
   backToTop()
+  activateMenuAtCurrentSection()
 })
