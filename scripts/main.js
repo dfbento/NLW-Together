@@ -15,10 +15,9 @@ for (const link of links) {
 }
 
 // efeito de sombra de scroll do header
-const header = document.querySelector('#header')
-const navHeight = header.offsetHeight
-
-window.addEventListener('scroll', function () {
+function chanceHeaderWhenScroll() {
+  const header = document.querySelector('#header')
+  const navHeight = header.offsetHeight
   if (window.scrollY >= navHeight) {
     // scroll maior que altura do header
     header.classList.add('scroll')
@@ -26,7 +25,7 @@ window.addEventListener('scroll', function () {
     // scroll menor que altura do header
     header.classList.remove('scroll')
   }
-})
+}
 
 // TESTIMONIALS CAROUSEL
 
@@ -53,7 +52,24 @@ scrollReveal.reveal(
   #about .image, #about .text,
   #services header, #services .card,
   #testimonials header, #testimonials .testimonials,
-  #contact .text, #contact .links
+  #contact .text, #contact .links,
+  footer .brand, footer .social
   `,
   { interval: 100 }
 )
+
+// back to up - botão voltar ao topo
+function backToTop() {
+  const backToUpButton = document.querySelector('.back-to-top')
+  if (window.scrollY >= 560) {
+    backToUpButton.classList.add('show')
+  } else {
+    backToUpButton.classList.remove('show')
+  }
+}
+
+// when scroll page
+window.addEventListener('scroll', function () {
+  chanceHeaderWhenScroll()
+  backToTop()
+})
