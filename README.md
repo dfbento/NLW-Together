@@ -18,6 +18,7 @@
 
 - Consiste em criar uma página web para um salão de beleza.
 - Aplicado alguns conceitos de responsividade dependendo do tamanho do dispositivo.
+- O projeto possibilita a alteração de cores bases através de variáveis bases.
 
 DEMO: https://dfbento.github.io/NLW-Together/
 
